@@ -648,6 +648,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2011216505}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &310626453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3621797072409748241, guid: b1537290f47c63744ac10546e5a71f18,
+    type: 3}
+  m_PrefabInstance: {fileID: 1426247034}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &320176252
 GameObject:
   m_ObjectHideFlags: 0
@@ -11009,20 +11015,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1160030654}
     m_Modifications:
-    - target: {fileID: 8494911258637119031, guid: 2ac041640baae784d9f2cf1c944ab291,
+    - target: {fileID: 4345284645558901323, guid: 2ac041640baae784d9f2cf1c944ab291,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2.935004
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8494911258637119031, guid: 2ac041640baae784d9f2cf1c944ab291,
+    - target: {fileID: 6723354953778315795, guid: 2ac041640baae784d9f2cf1c944ab291,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.9350045
-      objectReference: {fileID: 0}
-    - target: {fileID: 8494911258637119031, guid: 2ac041640baae784d9f2cf1c944ab291,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.935004
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8494911258637119031, guid: 2ac041640baae784d9f2cf1c944ab291,
         type: 3}
@@ -22463,12 +22464,17 @@ PrefabInstance:
     - target: {fileID: 4785569269825290086, guid: b1537290f47c63744ac10546e5a71f18,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4785569269825290086, guid: b1537290f47c63744ac10546e5a71f18,
         type: 3}
+      propertyPath: handleObject
+      value: 
+      objectReference: {fileID: 310626453}
+    - target: {fileID: 4785569269825290086, guid: b1537290f47c63744ac10546e5a71f18,
+        type: 3}
       propertyPath: damageEventCooldown
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4785569269825290086, guid: b1537290f47c63744ac10546e5a71f18,
         type: 3}
@@ -22510,6 +22516,11 @@ PrefabInstance:
       propertyPath: debugEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4785569269825290086, guid: b1537290f47c63744ac10546e5a71f18,
+        type: 3}
+      propertyPath: takeDamage1.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: ca7eabdbab058c343bcb5b1ff4b2f873, type: 3}
     - target: {fileID: 4785569269825290086, guid: b1537290f47c63744ac10546e5a71f18,
         type: 3}
       propertyPath: debugEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -28018,7 +28029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1711543435
 AudioSource:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7325333580611573080}
   - component: {fileID: 4698733351785664057}
   - component: {fileID: 5837704560597695361}
+  - component: {fileID: 6723354953778315795}
+  - component: {fileID: 4345284645558901323}
   m_Layer: 0
   m_Name: Mug
   m_TagString: Untagged
@@ -30,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.05796189}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.935004, y: 2.9350045, z: 2.935004}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -137,3 +139,61 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7219886339314900476, guid: ecbd93ac9b16a704d81261a53ee644da, type: 3}
+--- !u!114 &6723354953778315795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9126593456015701133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606820aaf89dfbe41b827037be9e4db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shatterPrefab: {fileID: 3031990233751843487, guid: cbb28f777df78c04ea4762ccbf2e0e86,
+    type: 3}
+--- !u!114 &4345284645558901323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9126593456015701133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79da652394a4c62438aa8e25eb4159f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumImpactVelocity: 3
+  damagePerImpact: 25
+  damageEventCooldown: 10
+  damageColor: {r: 0, g: 0, b: 0, a: 1}
+  handleObject: {fileID: 0}
+  takeDamage1:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6723354953778315795}
+        m_TargetAssemblyTypeName: Shatter, Assembly-CSharp
+        m_MethodName: ShatterObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  takeDamage2:
+    m_PersistentCalls:
+      m_Calls: []
+  takeDamage3:
+    m_PersistentCalls:
+      m_Calls: []
+  takeDamage4:
+    m_PersistentCalls:
+      m_Calls: []
+  debugEvent:
+    m_PersistentCalls:
+      m_Calls: []

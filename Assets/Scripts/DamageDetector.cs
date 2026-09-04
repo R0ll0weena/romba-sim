@@ -11,6 +11,8 @@ public class DamageDetector : MonoBehaviour
 
     [SerializeField] private Color damageColor = Color.black;
     private Material damageMaterial;
+    [SerializeField] private GameObject handleObject;
+    private Material handleMaterial;
 
     private const float MaximumHealth = 100f;
     private float currentHealth = MaximumHealth;
@@ -30,6 +32,9 @@ public class DamageDetector : MonoBehaviour
     {
         Renderer objectRenderer = GetComponent<Renderer>();
         damageMaterial = objectRenderer != null ? objectRenderer.material : null;
+
+        Renderer handleRenderer = handleObject != null ? handleObject.GetComponent<Renderer>() : null;
+        handleMaterial = handleRenderer != null ? handleRenderer.material : null;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -114,11 +119,14 @@ public class DamageDetector : MonoBehaviour
 
     public void turnBurnt()
     {
-        if (damageMaterial == null)
+        if (damageMaterial != null)
         {
-            return;
+            damageMaterial.color = damageColor;
         }
 
-        damageMaterial.color = damageColor;
+        if (handleMaterial != null)
+        {
+            handleMaterial.color = damageColor;
+        }
     }
 }
