@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,6 +7,7 @@ public class DamageDetector : MonoBehaviour
 {
     [SerializeField] private float minimumImpactVelocity = 2f;
     [SerializeField] private float damagePerImpact = 25f;
+    [SerializeField] private float damageEventCooldown = 1f;
 
     [SerializeField] private Color damageColor = Color.black;
     private Material damageMaterial;
@@ -12,12 +15,16 @@ public class DamageDetector : MonoBehaviour
     private const float MaximumHealth = 100f;
     private float currentHealth = MaximumHealth;
     private int damageLevel;
+    private readonly Queue<int> pendingDamageLevels = new Queue<int>();
+    private Coroutine damageEventCoroutine;
+    private float nextDamageEventTime;
 
     [Header("Events")]
     [SerializeField] private UnityEvent takeDamage1;
     [SerializeField] private UnityEvent takeDamage2;
     [SerializeField] private UnityEvent takeDamage3;
     [SerializeField] private UnityEvent takeDamage4;
+    [SerializeField] private UnityEvent debugEvent;
 
     private void Awake()
     {
@@ -41,9 +48,15 @@ public class DamageDetector : MonoBehaviour
         ApplyDamage(damagePerImpact);
     }
 
+    [ContextMenu("Trigger Debug Event")]
+    private void TriggerDebugEvent()
+    {
+        debugEvent?.Invoke();
+    }
+
     private void ApplyDamage(float damage)
     {
-        if (currentHealth <= 0f || damage <= 0f)
+        if (currentHealth <= 0f || damage <= 0f || Time.time < nextDamageEventTime)
         {
             return;
         }
@@ -54,8 +67,30 @@ public class DamageDetector : MonoBehaviour
         while (damageLevel < newDamageLevel)
         {
             damageLevel++;
-            InvokeDamageEvent(damageLevel);
+            pendingDamageLevels.Enqueue(damageLevel);
         }
+
+        if (damageEventCoroutine == null)
+        {
+            damageEventCoroutine = StartCoroutine(InvokeDamageEvents());
+        }
+    }
+
+    private IEnumerator InvokeDamageEvents()
+    {
+        while (pendingDamageLevels.Count > 0)
+        {
+            float waitTime = nextDamageEventTime - Time.time;
+            if (waitTime > 0f)
+            {
+                yield return new WaitForSeconds(waitTime);
+            }
+
+            InvokeDamageEvent(pendingDamageLevels.Dequeue());
+            nextDamageEventTime = Time.time + damageEventCooldown;
+        }
+
+        damageEventCoroutine = null;
     }
 
     private void InvokeDamageEvent(int level)
