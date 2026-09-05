@@ -648,12 +648,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2011216505}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &310626453 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3621797072409748241, guid: b1537290f47c63744ac10546e5a71f18,
-    type: 3}
-  m_PrefabInstance: {fileID: 1426247034}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &320176252
 GameObject:
   m_ObjectHideFlags: 0
@@ -22393,7 +22387,7 @@ MonoBehaviour:
   - {fileID: 610889299}
   - {fileID: 1993940988}
   edgePadding: 0.1
-  remainingChildren: 2000
+  remainingChildren: 120
 --- !u!4 &1401696124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2114544365571852543, guid: b2b1040f29fd5ed4bb531ba5954b983f,
@@ -22470,7 +22464,7 @@ PrefabInstance:
         type: 3}
       propertyPath: handleObject
       value: 
-      objectReference: {fileID: 310626453}
+      objectReference: {fileID: 0}
     - target: {fileID: 4785569269825290086, guid: b1537290f47c63744ac10546e5a71f18,
         type: 3}
       propertyPath: damageEventCooldown
@@ -22835,8 +22829,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456028584}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17194882, y: 0.022476695, z: -0.003924328, w: 0.98484164}
-  m_LocalPosition: {x: -0.53, y: 3.1728616, z: -8.95}
+  m_LocalRotation: {x: 0.24138203, y: 0.03263098, z: -0.008121414, w: 0.96984744}
+  m_LocalPosition: {x: -0.53, y: 3.1728616, z: -6.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28359,37 +28353,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2002297578}
   m_SourcePrefab: {fileID: 100100000, guid: c0eb883bd26d649448815aba284af5a2, type: 3}
---- !u!1 &1733013522
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1733013523}
-  m_Layer: 0
-  m_Name: ShelfColliders
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1733013523
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733013522}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8729141862344330676}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1780099401 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8290285545100290475, guid: f6435afd288f835429e31c0e71195adb,
@@ -30060,8 +30023,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2642810353190517047}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17194882, y: 0.022476694, z: -0.003924327, w: 0.98484164}
-  m_LocalPosition: {x: -0.53, y: 3.1728616, z: -8.95}
+  m_LocalRotation: {x: 0.24138205, y: 0.032630984, z: -0.008121416, w: 0.96984744}
+  m_LocalPosition: {x: -0.53, y: 3.1728616, z: -6.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30305,6 +30268,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5141778599698508908, guid: 625a16b402cfd487494f48992994e27e,
+        type: 3}
+      propertyPath: m_Name
+      value: Collides
+      objectReference: {fileID: 0}
     - target: {fileID: 5317318152158754676, guid: 625a16b402cfd487494f48992994e27e,
         type: 3}
       propertyPath: m_IsActive
@@ -30494,10 +30462,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 444446122}
-    - targetCorrespondingSourceObject: {fileID: 585256984652724077, guid: 625a16b402cfd487494f48992994e27e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1733013523}
     - targetCorrespondingSourceObject: {fileID: 7899747234774143701, guid: 625a16b402cfd487494f48992994e27e,
         type: 3}
       insertIndex: 1
@@ -30820,7 +30784,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30

@@ -1,17 +1,18 @@
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 public class ScaleColliderWindow : EditorWindow
 {
     private float percentage = 100f;
+    private bool onlyTriggerColliders;
+    private bool onlyNonTriggerColliders;
 
     [MenuItem("Custom/Scale Collider", priority = 0)]
     private static void Open()
     {
         ScaleColliderWindow window = GetWindow<ScaleColliderWindow>(true, "Scale Collider", true);
-        window.minSize = new Vector2(280f, 90f);
-        window.maxSize = new Vector2(280f, 90f);
+        window.minSize = new Vector2(280f, 130f);
+        window.maxSize = new Vector2(280f, 130f);
         window.Show();
     }
 
@@ -25,6 +26,8 @@ public class ScaleColliderWindow : EditorWindow
     {
         EditorGUILayout.LabelField("Scale selected colliders by percentage.");
         percentage = EditorGUILayout.FloatField("Percentage", percentage);
+        onlyTriggerColliders = EditorGUILayout.ToggleLeft("Only Is Trigger colliders", onlyTriggerColliders);
+        onlyNonTriggerColliders = EditorGUILayout.ToggleLeft("Only non-trigger colliders", onlyNonTriggerColliders);
 
         using (new EditorGUI.DisabledScope(percentage <= 0f))
         {
@@ -45,6 +48,11 @@ public class ScaleColliderWindow : EditorWindow
         {
             foreach (Collider collider in gameObject.GetComponents<Collider>())
             {
+                if (!ShouldAffect(collider.isTrigger))
+                {
+                    continue;
+                }
+
                 if (ScaleCollider(collider, factor))
                 {
                     changedCount++;
@@ -57,6 +65,11 @@ public class ScaleColliderWindow : EditorWindow
 
             foreach (Collider2D collider in gameObject.GetComponents<Collider2D>())
             {
+                if (!ShouldAffect(collider.isTrigger))
+                {
+                    continue;
+                }
+
                 if (ScaleCollider(collider, factor))
                 {
                     changedCount++;
@@ -76,6 +89,16 @@ public class ScaleColliderWindow : EditorWindow
         {
             Debug.LogWarning($"Scaled {changedCount} collider(s). {unsupportedCount} collider(s) were not supported by this tool.");
         }
+    }
+
+    private bool ShouldAffect(bool isTrigger)
+    {
+        if (onlyTriggerColliders == onlyNonTriggerColliders)
+        {
+            return true;
+        }
+
+        return onlyTriggerColliders == isTrigger;
     }
 
     private static bool ScaleCollider(Collider collider, float factor)
