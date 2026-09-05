@@ -16,6 +16,8 @@ public class Shatter : MonoBehaviour
         hasShattered = true;
 
         Transform objectTransform = transform;
+        Renderer originalRenderer = GetComponent<Renderer>();
+        Material originalMaterial = originalRenderer != null ? originalRenderer.sharedMaterial : null;
         GameObject replacement = Instantiate(
             shatterPrefab,
             objectTransform.position,
@@ -23,6 +25,15 @@ public class Shatter : MonoBehaviour
             objectTransform.parent);
 
         replacement.transform.localScale = objectTransform.localScale;
+
+        if (originalMaterial != null)
+        {
+            foreach (Renderer replacementRenderer in replacement.GetComponentsInChildren<Renderer>(true))
+            {
+                replacementRenderer.sharedMaterial = originalMaterial;
+            }
+        }
+
         Destroy(gameObject);
     }
 }
