@@ -1,0 +1,2 @@
+# how to run combine_blend_meshes.py
+blender --background --python "C:\repos\robot-cleaner-project\Assets\Blender Scripts\combine_blend_meshes.py"
