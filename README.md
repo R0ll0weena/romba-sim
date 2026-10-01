@@ -13,10 +13,10 @@ You drive a robot vacuum around a house and clean up dirt before time runs out.
 - **Cleaning:** Dirt is scattered randomly across the room's floors at the start of a round (`ScatterObjects`). Driving over dirt collects it (`Collectable`).
 - **Win and lose:** Collect all the dirt to win. If the countdown (`GameOverTimer`) reaches zero first, you lose. A game-over screen lets you restart (`GameOverUI`, `GameOverManager`).
 - **Movement:** Physics-based top-down WASD movement using the Unity Input System (`PlayerMovement`).
-- **Damage and destruction:** The house reacts when you bump into things:
-  - Hard impacts damage the robot in stages, and it eventually catches fire with smoke, sound, and a charred material (`DamageDetector`, `Burn`).
+- **Damage and destruction:** The robot itself doesn't take damage, but the objects you bump into can:
+  - Electronics that get knocked around may start to malfunction or catch fire. For example, a boombox knocked to the floor starts playing a broken radio track (`FallDetector`, `Timer`).
+  - Some objects take damage in stages from hard impacts and can eventually catch fire with smoke, sound, and a charred material (`DamageDetector`, `Burn`).
   - Fragile objects such as mugs shatter into pieces (`Shatter`).
-  - A boombox knocked to the floor starts playing a broken radio track (`FallDetector`, `Timer`).
 - **2D mode:** A top-down 2D version with a cat that reacts when you hit it (`CatHit`).
 
 ## Tech stack
